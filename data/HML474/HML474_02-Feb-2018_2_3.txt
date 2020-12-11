@@ -1,0 +1,64 @@
+% =============== WORM LINEAGE FILE ===========
+%
+% include any comments on the experiment here
+% COMMENTS:
+% animal was imaged with DIC (3ms/60%) and GFP (25ms/4%)
+%
+%
+%
+%
+% FOLDER: 02-Feb-2018_2 on Hard drive Data21
+%
+% AUTOMATED IMAGING WAS DONE
+% EXPERIMENT : 02/02/2018
+% WORM CHAMBER 3
+%
+% 33 slices, 0.7um distance
+% 
+%% ================= The '##' marks the beginning of relevant information
+%
+##
+genotype HML474
+imaging_method	automated
+temperature stage set to: 20.8 degrees
+water bath temperature set to 19.5
+measured temperatures with these settings on objective: 20.0degrees
+synch_date	2018-02-02 		### Date/time when worm was plated
+synch_time 	19:00:00			
+growth_condition plate
+mount_date 	2018-02-02			### Date/time when experiment was started
+mount_time 	19:00:00				
+end_of_experiment_date 2018-06-02	###
+end_of_experiment_time 10:00:00
+experiment_folder /Volumes/Data21/HML474/02-Feb-2018_2/
+fluorescence_peaks 1111
+experiment_type continuous
+worm_development_arrested no
+
+## LETHARGUS INFORMATION
+l1_lethargus_date NA 	### Date of entering L1 lethargus
+l1_lethargus_time NC	
+l1_molt_date NA 	### Date of L1/L2 molt
+l1_molt_time 21:15:00		### 
+l1_molt_frame_time 21:15:00
+
+l2_lethargus_date NA 	### Date of entering L2 lethargus
+l2_lethargus_time NC	
+l2_molt_date NA 		### Date of L2/L3 molt
+l2_molt_time 39:30:00
+l2_molt_frame_time 39:30:00
+
+l3_lethargus_date NA 	### Date of L3 lethargus
+l3_lethargus_time NC
+l3_molt_date NA 		### Date of L3/L4 molt
+l3_molt_time 57:31:00
+l3_molt_frame_time 57:31:00
+
+l4_lethargus_date NA 	### Date of 43 lethargus
+l4_lethargus_time NC
+l4_molt_date NA 		### Date of L4/adult molt
+l4_molt_time 79:46:00
+l4_molt_frame_time 79:46:00
+
+
+## EndOfFile
