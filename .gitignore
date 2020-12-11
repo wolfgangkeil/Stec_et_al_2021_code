@@ -1,0 +1,12 @@
+#Mac OS store files
+.DS_Store
+# Mat files
+*.mat
+
+# temporary matlab files
+*.m~
+
+# Others
+*.zip
+*.jpg
+*.pdf
