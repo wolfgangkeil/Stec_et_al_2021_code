@@ -1,6 +1,6 @@
 # Code accompanying Stec et al. An Epigenetic Priming Mechanism Mediated by Nutrient Sensing Regulates Transcriptional Output during C. elegans development, Current Biology, 2020
 
-This repository contains whole-animal fluorescence traces obtain from long-term live imaging as well as MATLAB® scripts to replicate the analyses of pulsatile gene expression, performed with the long-term live imaging data in Stec et al. Current Biology (2020)
+This repository contains whole-animal fluorescence traces obtained from long-term live imaging with Microfluidics (Keil et al. Dev Cell 2017) as well as MATLAB® scripts to replicate the analyses of pulsatile gene expression, performed in Stec et al. Current Biology (2020), Figure 5.
 
 If you use parts of this code please cite: Stec et al., Current Biology (2020), https://doi.org/10.1016/j.cub.2020.11.060
 For questions, please contact wolfgang.keil@curie.fr
