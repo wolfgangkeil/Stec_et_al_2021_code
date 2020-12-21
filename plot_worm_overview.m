@@ -8,24 +8,30 @@
 %   bg_mode ... this is a string, determining, what background mode we are
 %   using. Specify either 'spline_bg', 'constant_bg', or 'linear_bg'
 %
+%
+%
+% 
 % DESCRIPTION: this function just plots all worms in a given list, no scaling etc. is done.
 %              this is to give an overwiew over the data
 % 
+%
+% see also get_avg_fluorescence_timecourse.m , fit_worm_peaks
 %
 % by Wolfgang Keil, Institut Curie 2020, wolfgang.keil@curie.fr
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-    if nargin < 8
-        bg_mode = 'constant_bg'; % default is manual background determination
-    end
-    if nargin < 7
-        thresh = [];
-    end
-
     addpath('peakfit');
+
+    if nargin < 6
+        bg_mode = 'constant_bg'; % default is a constant background, manual determination
+    end
+
     
+    %%%%%% set these  these flags to '1' forces re-doing of the individual steps
+    compute_background = 1; 
+    redo_fitting = 1;
+        
     % Figure properties
     fs = 36;
     tl = [0.02 0.02];
@@ -33,15 +39,9 @@
     % seed the random number generator
     rand('seed', 1234);
 
-    
-    % this flag forces re-reading of the files
-    read_signal_again  = 0;
-    determine_bg_again = 0; 
-    redo_fitting = 0;
-    
-    
+        
     % FOR FIGURE
-    overlay_fit = 1;  
+    overlay_fit = 1;  % This flag overlays the fitted peak onto the data
         
     fid = fopen([dirname list_file]);
     C1 = textscan(fid, '%s');
@@ -49,7 +49,7 @@
     %%% Sort out the worms that are commented out
     ind = [];
     for ii  = 1:length(C1{1,1})
-        if ~strcmpi(C1{1,1}{ii}(1), '%')  % this allows to comment out animals in the list
+        if ~strcmpi(C1{1,1}{ii}(1), '%')  % this allows to comment out animals in the txt-list by putting a '%' at the beginning of the line
             ind = [ind, ii];
         end
     end
@@ -66,8 +66,7 @@
     
     % Gets the average WT lethargi lengths (this is what we are going to
     % scale everything to for one of the plots)
-    WT_lengths = ...
-                get_average_larval_stage_length('data/', 'all_WT_list.txt');
+    WT_lengths = get_average_larval_stage_length('data/', 'all_WT_list.txt');
   
     
     fh = figure(10);
@@ -104,18 +103,12 @@
             peaks_filename = ['data/' strain '/' C1{1,1}{ii}(tmp1(end)+1:tmp2(end)-1) '_ilastik_peaks_prob_thresh_0.5.mat'];
             bg_filename = ['data/' strain '/' C1{1,1}{ii}(tmp1(end)+1:tmp2(end)-1) '_ilastik_bg_prob_thresh_0.5.mat'];
 
-            if read_signal_again || ~exist(summary_filename, 'file')
-                % There should be code here to read the nuclei over time
-                [t_fluo, avg_fluo, success] = get_avg_fluorescence_timecourse(worm.experiment_folder, ...
-                        worm_index,channel, imaging_interval, computation_method, thresh);             
-                if success
-                    save(summary_filename, 't_fluo', 'avg_fluo');
-                else
-                    disp('Was trying to read the signal, but wasn''t successful. Trying to read old file.');
-                    load(summary_filename); 
-                end
-            else
+            % This reads the fluorescence time traces after worm
+            % segmentation with Ilastik
+            if exist(summary_filename, 'file')
                 load(summary_filename); 
+            else
+                break;
             end
 
             ax(ii) = subplot(no_rows,no_cols, ii);
@@ -142,7 +135,7 @@
             plot([molts(4) ,molts(4)], ylim, '--', 'color', [0.5 0.5 0.5]);
             hold off;
 
-            if determine_bg_again || ~exist(bg_filename, 'file')
+            if compute_background || ~exist(bg_filename, 'file')
                 % Manually input a few points as background, a function is
                 % fit to the points, depending on background mode
                 if strcmpi(bg_mode, 'constant_bg')

@@ -431,6 +431,7 @@ function [min_range, max_range] = select_range_to_fit(stage, t_fluo,avg_fluo_fil
     max_fluo = max(avg_fluo_filt);
 
     hFH = [];
+    
     while isempty(hFH)
         
         figure(8);

@@ -1,4 +1,5 @@
-function [t_time, fluorescence, success] = get_avg_fluorescence_timecourse(experiment_folder, worm_index,channel, imaging_interval) 
+function [t_time, fluorescence, success] = ...
+    get_avg_fluorescence_timecourse(experiment_folder, worm_index,channel, imaging_interval) 
 %
 %
 % PARAMETERS: 
