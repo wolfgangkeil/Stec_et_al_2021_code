@@ -12,6 +12,7 @@ For questions, please contact wolfgang.keil@curie.fr
 ## Data
 All data is contained in the subfolder 'data/'. Subfolders within 'data/' are named according to the C. elegans strain names (e.g. GR1395, HML474, see Key Resources Table in STAR Methods of Stec et al  Curr Biol 2020).  The 'data/' folder also contains .txt files (e.g. 'HML474_list.txt', 'all_WT_list.txt') which specify lists of individual animals that can be analyzed or plotted together. 
 
+
 Within the strain folders, for each animal, information about experimental conditions and the molting times as scored manually from the imaging data, is contained in .txt files, e.g. 'data/HML474/HML474_02-Feb-2018_2_2.txt'. These files are parsed by the function 'read_single_worm_molting_data' (see below). The .mat files with the same filenames contain the fluorescence time traces as well as information about background and parameter values of the Gaussian peaks fitted to the background-subtracted fluorescence time traces.  
 
 ## Plotting individual fluorescence time courses for pulsatile gene expression together with Gaussian fits
