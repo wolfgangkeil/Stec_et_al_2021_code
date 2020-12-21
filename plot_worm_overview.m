@@ -29,8 +29,8 @@
 
     
     %%%%%% set these  these flags to '1' forces re-doing of the individual steps
-    compute_background = 1; 
-    redo_fitting = 1;
+    compute_background = 0; 
+    redo_fitting = 0;
         
     % Figure properties
     fs = 36;
