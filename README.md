@@ -1,24 +1,20 @@
 # Stec_et_al_2020_code
-This repository contains whole-animal fluorescence traces obtain from long-term live imaging as well as MATLAB® scripts to replicate the analyses performed in Stec et al. Current Biology (2020)
+This repository contains whole-animal fluorescence traces obtain from long-term live imaging as well as MATLAB® scripts to replicate the analyses of pulsatile gene expression, performed with the long-term live imaging data in Stec et al. Current Biology (2020)
 
-If you use this code please cite: Stec et al., Current Biology (2020)
+If you use parts of this code please cite: Stec et al., Current Biology (2020)
 For questions, please contact wolfgang.keil@curie.fr
 
-## Peak fitting
-Executing statistical_analyses_Z1Z4lineages.m will load all early somatic gonad cell division timing 
-data gathered at 25˚C, provide some statistics and scatter plots.
-Within statistical_analyses_Z1Z4lineages.m, you may change the variable list_file to
-'WT_20degrees_list.txt' to analyze and plot data gathered at 20˚C.
- 
-The subfolders
-fluorescence_data/mlt-10 & 
-fluorescence_data/zk180.5
-contain the files with whole animal fluorescence of individual animals and .txt files specifying overall developmental progression of the animals (molts etc.)
+## The data
+All data is contained in the subfolder 'data/'. Subfolders within 'data/' are named according to the C. elegans strain names (e.g. GR1395, HML474, see Supplementary Information in Stec. et al 2020).  The 'data/' folder also contains .txt files (e.g. 'HML474_list.txt', 'all_WT_list.txt') which specify lists of individual animals that can be analyzed or plotted together. 
 
-## Analysis of stage durations and scaling of fluorescence time traces
+Within the strain folders, for each animal, information about experimental conditions and the molting times as scored manually from the imaging data, is contained in .txt files, e.g. 'data/HML474/HML474_02-Feb-2018_2_2.txt'. These files are parsed by the function 'read_single_worm_molting_data' (see below). The .mat files with the same filenames contain the fluorescence time traces as well as information about background and parameter values of the Gaussian peaks fitted to the background-subtracted fluorescence time traces.  
+
+## Plotting individual fluorescence time courses for pulsatile gene expression together with Gaussian fits
+Start by executing  'plot_worm_overview('data/', 'HML474','HML474_list.txt', 'GFP', 15,'constant')' as an example. You will see a plot showing all the fluorescence time traces
+overlaid with the corresponding Gaussian fits.  By changing the strain and and list name, you can plot different genetic backgrounds or fluorescent reporter genes.
 
 ## Analysis of dynamic features (onset, peak phase, duration etc.) in each larval stage
-
+Start by executing  'plot_peak_statistics_comparison({'data/', 'data/'}, {'GR1395', 'HML274'},{'GR1395_list.txt','HML274_list.txt'},{'WT','blmp-1(0)'}, 'mlt-10');' as an example. This will replicate figure 5J of Stec et al. 2020. By changing the strain and and list names, you can compare different genetic backgrounds for the same reporter gene to each other.
 
 ## Installation
 
